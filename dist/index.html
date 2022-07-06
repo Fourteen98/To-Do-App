@@ -2,11 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Webpack Exercise</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
-    <link rel="stylesheet" href="style.css">
-<script defer src="/runtime.bundle.js"></script><script defer src="/index.bundle.js"></script><script defer src="/print.bundle.js"></script></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <title>Webpack Exercise</title>
+<script defer src="/runtime.bundle.js"></script><script defer src="/index.bundle.js"></script></head>
 <body>
-    <h1>Hello webpack!</h1>
+
+<header>
+
+</header>
+<section class="home-page">
+    <div class="main-card">
+        <div class="top-card">
+            <div class="todo-header">
+                <h3>Today's To Do</h3>
+                <i class="fa-solid fa-arrows-rotate reload"></i>
+            </div>
+            <div class="form-card">
+                <form>
+                    <div class="sep-form">
+                        <input type="text" placeholder="Add to your list..." id="input-todo" size="50">
+                        <i class="fa-solid fa-plus add-todo"></i>
+                    </div>
+                    <br><small class="error-msg"></small>
+                </form>
+            </div>
+
+        </div>
+        <div class="main-list-card">
+        </div>
+        <div class="clear">
+            <p>Clear all Completed</p>
+        </div>
+    </div>
+
+</section>
 </body>
 </html>
