@@ -1,3 +1,92 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: bisque;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 2% 2% 2% 2%;
+  background-color: #fafafa;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-card {
+  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 5px 17px -2px dimgray;
+  padding: 2%;
+}
+
+.form-card {
+  border-bottom: 1px solid gainsboro;
+}
+
+.form-card #input-todo {
+  height: 40px;
+  border: 0;
+  outline: 0;
+}
+
+form {
+  display: flex;
+
+  /* gap: 10px; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.top-card > * {
+  margin: 10px;
+  border-bottom-color: black;
+}
+
+.todo-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-list-card > * {
+  margin: 10px;
+  border-bottom: 1px solid gainsboro;
+}
+
+.todo {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.error-msg {
+  color: red;
+}
+
+.clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gainsboro;
+  height: 2rem;
 }
