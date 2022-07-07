@@ -1,58 +1,60 @@
 // import _ from 'lodash';
+import LocalStorage from './local_storage.js';
+import TodoTask from './todoTask.js';
+import Task from './task.js';
 import './style.css';
 
-const mainListCard = document.querySelector('.main-list-card');
+const inputTodo = document.getElementById('input-todo');
+const addTodo = document.querySelector('.add-todo');
+const error = document.querySelector('.error-msg');
+const reload = document.querySelector('.reload');
 
-const todoTask = [
-  {
-    description: 'Typing',
-    isCompleted: false,
-    index: 3,
-  },
-  {
-    description: 'Listening',
-    isCompleted: false,
-    index: 2,
-  },
-  {
-    description: 'Take Nap',
-    isCompleted: false,
-    index: 1,
-  },
-  {
-    description: 'Gaming',
-    isCompleted: false,
-    index: 0,
-  },
-];
+// create a todo task object
+const todo = (index, description, completed) => new TodoTask(index, description, completed);
 
-const createTask = (task) => {
-  const todoCard = document.createElement('div');
-  todoCard.classList.add('todo');
+const localS = new LocalStorage();
+const task = new Task();
+// keeps track of id from local storage
+let idFromStorage = 0;
 
-  const divide = document.createElement('div');
-  divide.classList.add('divide');
+const getTodoLastIndex = () => localS.getLocalStorage().length;
 
-  const inputType = document.createElement('input');
-  inputType.setAttribute('type', 'checkbox');
-  inputType.id = task.index;
-  divide.appendChild(inputType);
+addTodo.addEventListener('click', (e) => {
+  e.preventDefault();
+  const msg = [];
 
-  const label = document.createElement('label');
-  label.setAttribute('for', task.index);
-  label.innerText = ` ${task.description}`;
-  divide.appendChild(label);
+  if (inputTodo.value === '') {
+    msg.push('Empty field!');
+    error.innerText = msg.join(', ');
+  } else {
+    localS.setStorage(todo(idFromStorage, inputTodo.value, 0));
+    task.createTask(todo(idFromStorage, inputTodo.value, 0));
+  }
+  inputTodo.value = '';
+  idFromStorage += 1;
+});
 
-  const ellipsis = document.createElement('i');
-  ellipsis.classList.add('fas');
-  ellipsis.classList.add('fa-ellipsis-v');
-
-  todoCard.appendChild(divide);
-  todoCard.appendChild(ellipsis);
-
-  mainListCard.appendChild(todoCard);
+const handleChange = () => {
+  const tempDescription = inputTodo.value;
+  localStorage.setItem('tempDescription', JSON.stringify(tempDescription));
 };
 
-todoTask.forEach((task) => {
-  createTask(task);
+inputTodo.onkeyup = handleChange;
+
+const getChange = () => {
+  const tempDescription = localStorage.getItem('tempDescription');
+  if (tempDescription) {
+    inputTodo.value = JSON.parse(tempDescription);
+  }
+};
+
+window.addEventListener('load', () => {
+  idFromStorage = getTodoLastIndex();
+  console.log(getTodoLastIndex());
+  task.generateTodo();
+  getChange();
+});
+
+reload.addEventListener('click', () => {
+  task.generateTodo();
 });
