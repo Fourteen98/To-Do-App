@@ -2,10 +2,6 @@
 import './style.css';
 
 const mainListCard = document.querySelector('.main-list-card');
-// const inputTodo = document.getElementById('input-todo');
-// const addTodo = document.querySelector('.add-todo');
-// const error = document.querySelector('.error-msg');
-// const reload = document.querySelector('.reload');
 
 const todoTask = [
   {

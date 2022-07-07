@@ -7,17 +7,45 @@
 
 ## Built With
 
-- HTML, CSS, Javascript
-- Linters
+- HTML
+- CSS
+- Javascript (ES6)
+- Webpack
+- Linters(Lighthouse, Webhint, Stylelint, Eslint)
 
 ## Live Demo
 
 [Live Demo Link](https://livedemo.com)
 
-[Live Demo](https://hannziegel.github.io/captstoneModule1/)
-
 ## Getting Started
-Clone the repository or use the code button on the right to download the zip file of the project, unzip it and open the index.html file in the browser
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+install git, nodejs, any code editor in your local machine
+
+### Setup
+clone the repo or download from https://github.com/Fourteen98/To-Do-App
+
+### Install dependencies
+
+'npm install'
+
+
+### Build the app
+
+`npm run build`
+
+
+### Run the app
+
+`npm start `
+This automatically start app on localhost:3000
+
+### Deployment
+
+To run the project run the "index.html" file in your browser.
+
 
 ## Authors
 
