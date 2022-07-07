@@ -1,13 +1,13 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 import './style.css';
 
-const inputTodo = document.getElementById('input-todo');
-const addTodo = document.querySelector('.add-todo');
-const error = document.querySelector('.error-msg');
 const mainListCard = document.querySelector('.main-list-card');
-const reload = document.querySelector('.reload');
+// const inputTodo = document.getElementById('input-todo');
+// const addTodo = document.querySelector('.add-todo');
+// const error = document.querySelector('.error-msg');
+// const reload = document.querySelector('.reload');
 
-let todoTask = [
+const todoTask = [
   {
     description: 'Typing',
     isCompleted: false,
@@ -58,5 +58,5 @@ const createTask = (task) => {
 };
 
 todoTask.forEach((task) => {
-  createTask(task)
+  createTask(task);
 });
