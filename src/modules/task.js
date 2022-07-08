@@ -1,9 +1,13 @@
 import LocalStorage from './local_storage.js';
+import Status from './status.js';
 
 const mainListCard = document.querySelector('.main-list-card');
 
 // create object from  localStorage
 const localS = new LocalStorage();
+
+// create status object from Status
+const status = new Status();
 
 class Task {
   // eslint-disable-next-line class-methods-use-this
@@ -13,10 +17,7 @@ class Task {
 
     // add element to todo
     todoCard.innerHTML = `<div class="class-sep">
-            <button class="check-task">
-                <i class="fa-regular fa-square"></i> 
-                <i class="fa-solid fa-check"></i>
-            </button> 
+            <input type="checkbox" id="${task.index}">
             <input class="input-type" size="50"  type="text" id="${task.index}"  value="${task.description}">
         </div>
         <button class="remove-task" id="${task.index}">
@@ -29,6 +30,20 @@ class Task {
 
     todoCard.addEventListener('keypress', (e) => {
       this.updateTask(e.target.value, Number(e.target.id));
+    });
+
+    // for the checkbox
+    todoCard.addEventListener('click', (e) => {
+      if (e.target.getAttribute('type') === 'checkbox') {
+        if (e.target.checked === true) {
+          console.log('it is checked');
+          console.log(e.target.id);
+          console.log(localS.getLocalStorage());
+          status.updateTaskCompletedStatus(Number(e.target.id), 1);
+        } else {
+          status.updateTaskCompletedStatus(Number(e.target.id), 0);
+        }
+      }
     });
 
     mainListCard.appendChild(todoCard);
