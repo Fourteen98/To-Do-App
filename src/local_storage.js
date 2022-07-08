@@ -12,10 +12,10 @@ class LocalStorage {
   }
 
    setStorage = (singleTodo) => {
-    const todo = this.getLocalStorage();
-    todo.push(singleTodo);
-    localStorage.setItem('todo', JSON.stringify(todo));
-  };
+     const todo = this.getLocalStorage();
+     todo.push(singleTodo);
+     localStorage.setItem('todo', JSON.stringify(todo));
+   };
 
   removeLocalStorage = (index) => {
     const todo = this.getLocalStorage();
