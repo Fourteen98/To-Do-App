@@ -17,13 +17,12 @@ class LocalStorage {
     localStorage.setItem('todo', JSON.stringify(todo));
   }
 
-  removeLocalStorage(id) {
+  removeLocalStorage(index) {
     const todo = this.getLocalStorage();
-    todo.forEach((singleBook, index) => {
-      if (singleBook.id === Number(id)) {
-        singleBook.splice(index, 1);
-      }
-    });
+    todo.splice(index, 1);
+    for (let i = 0; i < todo.length; i += 1) {
+      todo[i].index = i;
+    }
     localStorage.setItem('todo', JSON.stringify(todo));
   }
 }

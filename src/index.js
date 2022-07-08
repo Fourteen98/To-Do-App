@@ -14,8 +14,6 @@ const todo = (index, description, completed) => new TodoTask(index, description,
 
 const localS = new LocalStorage();
 const task = new Task();
-// keeps track of id from local storage
-let idFromStorage = 0;
 
 const getTodoLastIndex = () => localS.getLocalStorage().length;
 
@@ -27,11 +25,10 @@ addTodo.addEventListener('click', (e) => {
     msg.push('Empty field!');
     error.innerText = msg.join(', ');
   } else {
-    localS.setStorage(todo(idFromStorage, inputTodo.value, 0));
-    task.createTask(todo(idFromStorage, inputTodo.value, 0));
+    localS.setStorage(todo(getTodoLastIndex(), inputTodo.value, 0));
+    task.createTask(todo(getTodoLastIndex(), inputTodo.value, 0));
   }
   inputTodo.value = '';
-  idFromStorage += 1;
 });
 
 const handleChange = () => {
@@ -49,8 +46,6 @@ const getChange = () => {
 };
 
 window.addEventListener('load', () => {
-  idFromStorage = getTodoLastIndex();
-  console.log(getTodoLastIndex());
   task.generateTodo();
   getChange();
 });

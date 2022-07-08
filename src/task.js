@@ -3,7 +3,7 @@ import LocalStorage from './local_storage.js';
 const mainListCard = document.querySelector('.main-list-card');
 
 // create object from  localStorage
-const localStorage = new LocalStorage();
+const localS = new LocalStorage();
 
 class Task {
   // eslint-disable-next-line class-methods-use-this
@@ -11,36 +11,51 @@ class Task {
     const todoCard = document.createElement('div');
     todoCard.classList.add('todo');
 
-    const divide = document.createElement('div');
-    divide.classList.add('divide');
+    // add element to todo
+    todoCard.innerHTML = `<div class="class-sep">
+            <button class="check-task">
+                <i class="fa-regular fa-square"></i> 
+                <i class="fa-solid fa-check"></i>
+            </button> 
+            <input class="input-type" size="50"  type="text" id="${task.index}"  value="${task.description}">
+        </div>
+        <button class="remove-task" id="${task.index}">
+            <i class="fa-solid fa-trash-can"></i>
+        </button>`;
 
-    const inputType = document.createElement('input');
-    inputType.setAttribute('type', 'checkbox');
-    inputType.id = task.index;
-    divide.appendChild(inputType);
+    todoCard.addEventListener('click', (e) => {
+      this.removeTask(e.target);
+    });
 
-    const label = document.createElement('label');
-    label.setAttribute('for', task.index);
-    label.innerText = ` ${task.description}`;
-    divide.appendChild(label);
-
-    const ellipsis = document.createElement('i');
-    ellipsis.classList.add('fas');
-    ellipsis.classList.add('fa-ellipsis-v');
-
-    todoCard.appendChild(divide);
-    todoCard.appendChild(ellipsis);
+    todoCard.addEventListener('keypress', (e) => {
+      this.updateTask(e.target.value, Number(e.target.id));
+    });
 
     mainListCard.appendChild(todoCard);
   }
 
   generateTodo() {
-    const todo = localStorage.getLocalStorage();
+    const todo = localS.getLocalStorage();
     let counter = 0;
+    mainListCard.innerHTML = '';
     while (counter < todo.length) {
       this.createTask(todo[counter]);
       counter += 1;
     }
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  removeTask(t) {
+    if (t.classList.contains('fa-trash-can')) {
+      t.parentElement.parentElement.remove();
+      localS.removeLocalStorage((t.parentElement.id));
+    }
+  }
+
+  updateTask = (val, index) => {
+    const todo = localS.getLocalStorage();
+    todo[index].description = val;
+    localStorage.setItem('todo', JSON.stringify(todo));
   }
 }
 

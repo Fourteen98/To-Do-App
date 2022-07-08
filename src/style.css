@@ -16,7 +16,7 @@ body {
 }
 
 section {
-  width: 100%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,35 +24,18 @@ section {
 
 .main-card {
   min-height: 10rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: #fff;
   border-radius: 10px;
   box-shadow: 2px 5px 17px -2px dimgray;
-  padding: 2%;
-}
-
-.form-card {
-  border-bottom: 1px solid gainsboro;
-}
-
-.form-card #input-todo {
-  height: 40px;
-  border: 0;
-  outline: 0;
-}
-
-form {
-  display: flex;
-
-  /* gap: 10px; */
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding: 5%;
 }
 
 .top-card > * {
-  margin: 10px;
+  padding: 10px;
   border-bottom-color: black;
 }
 
@@ -62,25 +45,82 @@ form {
   justify-content: space-between;
 }
 
-.main-list-card {
+.form-card {
+  border-bottom: 1px solid gainsboro;
+}
+
+form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  width: 100%;
+}
+
+.sep-form {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
+#input-todo {
+  height: 30px;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  color: #8b8c89;
+  align-self: flex-start;
+}
+
+.error-msg {
+  color: red;
+}
+
+.main-list-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .main-list-card > * {
-  margin: 10px;
   border-bottom: 1px solid gainsboro;
 }
 
 .todo {
   display: flex;
+  width: 100%;
   gap: 10px;
-  justify-content: space-between;
 }
 
-.error-msg {
-  color: red;
+.class-sep {
+  display: flex;
+  width: 100%;
+  gap: 3px;
+}
+
+.input-type {
+  height: 30px;
+  width: 100%;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  color: #8b8c89;
+  align-self: flex-start;
+}
+
+.check-task {
+  display: flex;
+}
+
+button {
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .clear {
@@ -89,4 +129,18 @@ form {
   justify-content: center;
   background-color: gainsboro;
   height: 2rem;
+  cursor: pointer;
+}
+
+.reload:active {
+  transform: rotate(90deg);
+}
+
+.fa-check {
+  display: none;
+  color: greenyellow;
+}
+
+.task-active {
+  display: none;
 }
