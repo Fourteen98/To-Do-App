@@ -7,7 +7,7 @@ const localS = new LocalStorage();
 
 class Task {
   // eslint-disable-next-line class-methods-use-this
-  createTask(task) {
+  createTask = (task) => {
     const todoCard = document.createElement('div');
     todoCard.classList.add('todo');
 
@@ -34,7 +34,7 @@ class Task {
     mainListCard.appendChild(todoCard);
   }
 
-  generateTodo() {
+  generateTodo = () => {
     const todo = localS.getLocalStorage();
     let counter = 0;
     mainListCard.innerHTML = '';
@@ -45,7 +45,7 @@ class Task {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  removeTask(t) {
+  removeTask = (t) => {
     if (t.classList.contains('fa-trash-can')) {
       t.parentElement.parentElement.remove();
       localS.removeLocalStorage((t.parentElement.id));

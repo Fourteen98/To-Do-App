@@ -1,6 +1,6 @@
 class LocalStorage {
   // eslint-disable-next-line class-methods-use-this
-  getLocalStorage() {
+  getLocalStorage = () => {
     let todo;
     if (localStorage.getItem('todo') === null) {
       todo = [];
@@ -11,13 +11,13 @@ class LocalStorage {
     return todo;
   }
 
-  setStorage(singleTodo) {
+   setStorage = (singleTodo) => {
     const todo = this.getLocalStorage();
     todo.push(singleTodo);
     localStorage.setItem('todo', JSON.stringify(todo));
-  }
+  };
 
-  removeLocalStorage(index) {
+  removeLocalStorage = (index) => {
     const todo = this.getLocalStorage();
     todo.splice(index, 1);
     for (let i = 0; i < todo.length; i += 1) {
