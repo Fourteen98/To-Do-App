@@ -136,10 +136,6 @@ button {
   transform: rotate(90deg);
 }
 
-.fa-check {
-  display: none;
-  color: greenyellow;
-}
 
 .task-active {
   display: none;
