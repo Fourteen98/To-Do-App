@@ -1,19 +1,21 @@
 // import _ from 'lodash';
-import LocalStorage from './local_storage.js';
-import TodoTask from './todoTask.js';
-import Task from './task.js';
+import LocalStorage from './modules/local_storage.js';
+import TodoTask from './modules/todoTask.js';
+import Task from './modules/task.js';
+import Status from './modules/status.js';
 import './style.css';
 
 const inputTodo = document.getElementById('input-todo');
 const addTodo = document.querySelector('.add-todo');
 const error = document.querySelector('.error-msg');
 const reload = document.querySelector('.reload');
-
+const clearCompleted = document.querySelector('.clear');
 // create a todo task object
 const todo = (index, description, completed) => new TodoTask(index, description, completed);
 
 const localS = new LocalStorage();
 const task = new Task();
+const status = new Status();
 
 const getTodoLastIndex = () => localS.getLocalStorage().length;
 
@@ -51,5 +53,10 @@ window.addEventListener('load', () => {
 });
 
 reload.addEventListener('click', () => {
+  task.generateTodo();
+});
+
+clearCompleted.addEventListener('click', () => {
+  status.clearTaskCompleted();
   task.generateTodo();
 });
