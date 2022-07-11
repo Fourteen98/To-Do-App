@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+Can check the live demo [here](https://fourteen98.github.io/To-Do-App/dist/index.html)
 
 ## Getting Started
 
