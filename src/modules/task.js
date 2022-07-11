@@ -40,6 +40,9 @@ class Task {
     });
 
     mainListCard.appendChild(todoCard);
+    if (task.completed === 1){
+      document.querySelector('.check-box').checked = true;
+    }
   }
 
   generateTodo = () => {
