@@ -9,8 +9,6 @@ class Status {
       }
       const todo = localS.getLocalStorage();
       todo[index].completed = status;
-      // console.log(todo[index].completed);
-      console.log(todo);
       localStorage.setItem('todo', JSON.stringify(todo));
     }
 
